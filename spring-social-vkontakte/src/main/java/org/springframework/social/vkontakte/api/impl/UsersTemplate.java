@@ -35,10 +35,12 @@ import java.util.List;
  */
 class UsersTemplate extends AbstractVKontakteOperations implements IUsersOperations {
     private final RestTemplate restTemplate;
+    private final String email;
 
-    public UsersTemplate(RestTemplate restTemplate, String accessToken, ObjectMapper objectMapper, boolean isAuthorizedForUser) {
+    public UsersTemplate(RestTemplate restTemplate, String accessToken, ObjectMapper objectMapper, boolean isAuthorizedForUser, String email) {
         super(isAuthorizedForUser, accessToken, objectMapper);
         this.restTemplate = restTemplate;
+        this.email = email;
     }
 
     public List<VKontakteProfile> getUsers(List<String> userIds) {
@@ -76,7 +78,9 @@ class UsersTemplate extends AbstractVKontakteOperations implements IUsersOperati
     }
 
     public VKontakteProfile getUser() {
-        return getUsers(null).get(0);
+        VKontakteProfile vKontakteProfile = getUsers(null).get(0);
+        vKontakteProfile.setEmail(email);
+        return vKontakteProfile;
     }
 
     public VKontakteProfile getUser(String fields) {

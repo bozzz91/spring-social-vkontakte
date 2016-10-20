@@ -25,7 +25,7 @@ import java.util.List;
  * @author vkolodrevskiy
  */
 public interface IUsersOperations {
-    String DEFAULT_FIELDS = "first_name,last_name,photo_50,photo_100,photo_200,contacts,bdate,sex,screen_name";
+    String DEFAULT_FIELDS = "first_name,last_name,photo_50,photo_100,photo_200,contacts,bdate,sex,screen_name,domain";
 
     /**
      * Retrieves the profile for the authenticated user.
