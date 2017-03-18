@@ -40,6 +40,7 @@ public class VKontakteAdapterTest {
 	public void fetchProfile() {
         VKontakteProfile tmpProfile = new VKontakteProfile();
         tmpProfile.setDomain("id123");
+        tmpProfile.setId(123L);
 		tmpProfile.setScreenName("myNick");
         tmpProfile.setFirstName("Viktor");
         tmpProfile.setLastName("Kolodrevskiy");
@@ -47,7 +48,7 @@ public class VKontakteAdapterTest {
         Mockito.when(vkontakte.usersOperations()).thenReturn(usersOperations);
 
         UserProfile profile = apiAdapter.fetchUserProfile(vkontakte);
-		assertEquals("id123", profile.getId());
+		assertEquals("123", profile.getId());
 		assertEquals("myNick", profile.getUsername());
 		assertEquals("Viktor", profile.getFirstName());
 		assertEquals("Kolodrevskiy", profile.getLastName());
